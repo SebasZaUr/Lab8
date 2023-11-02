@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gráfica de Empleados por Sexo</title>
+  <!-- Incluir Chart.js desde un CDN (Content Delivery Network) -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<h1>Gráfica de Empleados por Sexo</h1>
+<canvas id="grafica"></canvas>
+
+<script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Datos para la gráfica (ejemplo)
+            var datosGrafica = {
+                "Masculino": 20,
+                "Femenino": 15
+            };
+
+            var etiquetas = Object.keys(datosGrafica);
+            var valores = Object.values(datosGrafica);
+
+            var ctx = document.getElementById('grafica').getContext('2d');
+            var grafica = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: etiquetas,
+                    datasets: [{
+                        label: 'Número de Empleados',
+                        data: valores,
+                        backgroundColor: ['rgba(75, 192, 192, 0.2)', 'rgba(255, 99, 132, 0.2)'],
+                        borderColor: ['rgba(75, 192, 192, 1)', 'rgba(255, 99, 132, 1)'],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+

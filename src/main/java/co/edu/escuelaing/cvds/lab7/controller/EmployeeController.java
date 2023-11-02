@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Controller
@@ -50,4 +51,24 @@ public class EmployeeController {
          employeeService.deleteEmployee(id);
          return "redirect:/employee";
      }
+    @GetMapping("/tabla")
+    public String mostrarGrafica(Model model) {
+
+        Map<String, Integer> datosGrafica = employeeService.obtenerDatosGraficaPorSexo();
+        System.out.println("Datos de la gráfica: " + datosGrafica); // Imprimir datos en la consola del servidor
+        model.addAttribute("datosGrafica", datosGrafica);
+        return "tabla";
+    }
+    @GetMapping("/seleccionar")
+    public String mostrarFormularioSeleccion() {
+        return "seleccionar"; // Retorna el nombre del archivo HTML sin la extensión
+    }
+    @GetMapping("/pie")
+    public String mostrarGraficapie(Model model) {
+
+        Map<String, Integer> datosGrafica = employeeService.obtenerDatosGraficaPorSexo();
+        System.out.println("Datos de la gráfica: " + datosGrafica); // Imprimir datos en la consola del servidor
+        model.addAttribute("datosGrafica", datosGrafica);
+        return "pie";
+    }
 }

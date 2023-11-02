@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.*;
 import java.util.Optional;
 
 @Service
@@ -44,7 +45,11 @@ public class EmployeeService {
     }
 
 
+    public Map<String,Integer> obtenerDatosGraficaPorSexo() {
+        Map<String, Integer> datos = new HashMap<>();
+        datos.put("Masculino", 20);
+        datos.put("Femenino", 36);
 
-
-
+        return datos;
+    }
 }
