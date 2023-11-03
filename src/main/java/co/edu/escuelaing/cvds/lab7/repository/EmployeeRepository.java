@@ -10,5 +10,8 @@ import java.util.List;
 public interface EmployeeRepository extends JpaRepository<Employee, String> {
     @Query("SELECT e.salary FROM Employee e")
     List<Float> getAllSalaries();
+    List<Employee> findByCompany(String company);
+
+    List<Employee> findByGenero(String gender);
 }
 

@@ -32,7 +32,7 @@ public class EmployeeController {
         employeeService.addEmployee(employee);
         return "redirect:/employee";
     }
-    
+
     @GetMapping("/update/{id}")
     public String showFormForUpdate(@PathVariable( value = "id") String id, Model model) {
 
@@ -58,7 +58,58 @@ public class EmployeeController {
     }
     @GetMapping("/histograma")
     public String histograma(Model model) {
-        model.addAttribute("salaries", employeeService.getAllSalaries());
+        List<Float> salarios = employeeService.getAllSalaries();
+        model.addAttribute("salaries", salarios );
         return "histograma";
     }
+    @GetMapping("/empresa")
+    public String employeeByCompany(Model model) {
+        int microsoft = employeeService.getEmployeesByCompany("Microsoft").size();
+        int google = employeeService.getEmployeesByCompany("Google").size();
+        int aplee = employeeService.getEmployeesByCompany("Apple").size();
+        int bavaria = employeeService.getEmployeesByCompany("Bavaria").size();
+        model.addAttribute("Microsoft", microsoft );
+        model.addAttribute("Google", google );
+        model.addAttribute("Apple", aplee );
+        model.addAttribute("Bavaria", bavaria );
+        return "empresa";
+    }
+
+    @GetMapping("/salarioPromedio")
+    public String salarioPromedioPorEmpresa(Model model) {
+        double salarioPromedioMicrosoft = employeeService.calcularSalarioPromedioPorEmpresa("Microsoft");
+        double salarioPromedioGoogle = employeeService.calcularSalarioPromedioPorEmpresa("Google");
+        double salarioPromedioApple = employeeService.calcularSalarioPromedioPorEmpresa("Apple");
+        double salarioPromedioBavaria = employeeService.calcularSalarioPromedioPorEmpresa("Bavaria");
+
+        model.addAttribute("salarioPromedioMicrosoft", salarioPromedioMicrosoft);
+        model.addAttribute("salarioPromedioGoogle", salarioPromedioGoogle);
+        model.addAttribute("salarioPromedioApple", salarioPromedioApple);
+        model.addAttribute("salarioPromedioBavaria", salarioPromedioBavaria);
+
+        return "salarioPromedio";
+    }
+    @GetMapping("/gastoSalarios")
+    public String gastoSalariosPorEmpresa(Model model) {
+        double gastoSalarioMicrosoft = employeeService.calcularGastosSalariosPorEmpresa("Microsoft");
+        double gastoSalarioGoogle = employeeService.calcularGastosSalariosPorEmpresa("Google");
+        double gastoSalarioApple = employeeService.calcularGastosSalariosPorEmpresa("Apple");
+        double gastoSalarioBavaria = employeeService.calcularGastosSalariosPorEmpresa("Bavaria");
+
+        model.addAttribute("salarioPromedioMicrosoft", gastoSalarioMicrosoft);
+        model.addAttribute("salarioPromedioGoogle", gastoSalarioGoogle);
+        model.addAttribute("salarioPromedioApple", gastoSalarioApple);
+        model.addAttribute("salarioPromedioBavaria", gastoSalarioBavaria);
+
+        return "gastoSalarios";
+    }
+    @GetMapping("/personasPorGenero")
+    public String personasPorGenero(Model model) {
+        int masculinos = employeeService.getEmployeesByGender("Masculino").size();
+        int femeninos = employeeService.getEmployeesByGender("Femenino").size();
+        model.addAttribute("masculinos", masculinos);
+        model.addAttribute("femeninos", femeninos);
+        return "personasPorGenero";
+    }
+
 }

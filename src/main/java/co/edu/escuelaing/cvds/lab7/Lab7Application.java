@@ -75,16 +75,7 @@ public class Lab7Application {
 			employeeService.addEmployee(new Employee("48", "Javier", "Pérez", "Analista", 55000, "Apple", "Masculino"));
 			employeeService.addEmployee(new Employee("49", "Alejandro", "Rodríguez", "Gerente", 48000, "Apple", "Masculino"));
 			employeeService.addEmployee(new Employee("50", "Andrés", "Fernández", "Desarrollador", 51000, "Apple", "Masculino"));
-			employeeService.addEmployee(new Employee("51", "Eduardo", "Sánchez", "Diseñador", 53000, "Bavaria", "Masculino"));
-			employeeService.addEmployee(new Employee("52", "Felipe", "Torres", "Analista", 49000, "Bavaria", "Masculino"));
-			employeeService.addEmployee(new Employee("53", "Francisco", "López", "Gerente", 56000, "Bavaria", "Masculino"));
-			employeeService.addEmployee(new Employee("54", "Miguel", "Ramírez", "Desarrollador", 52000, "Bavaria", "Masculino"));
-			employeeService.addEmployee(new Employee("55", "Diego", "Hernández", "Diseñador", 54000, "Bavaria", "Masculino"));
-			employeeService.addEmployee(new Employee("56", "Gabriel", "Gutiérrez", "Analista", 50000, "Bavaria", "Masculino"));
-			employeeService.addEmployee(new Employee("57", "Pablo", "Molina", "Gerente", 57000, "Bavaria", "Masculino"));
-			employeeService.addEmployee(new Employee("58", "Raúl", "Castro", "Desarrollador", 53000, "Bavaria", "Masculino"));
-			employeeService.addEmployee(new Employee("59", "Héctor", "Ortega", "Diseñador", 55000, "Bavaria", "Masculino"));
-			employeeService.addEmployee(new Employee("60", "Jorge", "Chávez", "Analista", 51000, "Bavaria", "Masculino"));
+
 
 		};
 	}

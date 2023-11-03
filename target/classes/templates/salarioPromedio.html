@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <!-- ... (metadatos y estilos) ... -->
+</head>
+<body>
+<div class="container">
+  <h1>Salario promedio por empresa</h1>
+  <canvas id="salarioPromedioChart"></canvas>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var ctx = document.getElementById('salarioPromedioChart').getContext('2d');
+    var salarioPromedioChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Microsoft', 'Google', 'Apple', 'Bavaria'],
+        datasets: [{
+          label: 'Salario Promedio',
+          data: [/* Aquí van los valores de salario promedio por empresa */],
+          backgroundColor: ['rgba(75, 192, 192, 0.2)', 'rgba(255, 99, 132, 0.2)', 'rgba(255, 206, 86, 0.2)', 'rgba(153, 102, 255, 0.2)'],
+          borderColor: ['rgba(75, 192, 192, 1)', 'rgba(255, 99, 132, 1)', 'rgba(255, 206, 86, 1)', 'rgba(153, 102, 255, 1)'],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        plugins: {
+          datalabels: {
+            align: 'end',
+            anchor: 'end',
+            font: {
+              size: 16
+            }
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  });
+</script>
+</body>
+</html>

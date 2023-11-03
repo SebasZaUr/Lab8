@@ -46,7 +46,37 @@ public class EmployeeService {
         employeeRepository.deleteById(id);
     }
 
+    public List<Employee> getEmployeesByCompany(String company) {
+        return employeeRepository.findByCompany(company);
+    }
 
+    public double calcularSalarioPromedioPorEmpresa(String company) {
+        List<Employee> employees = getEmployeesByCompany(company);
+        if (employees.isEmpty()) {
+            return 0;
+        }
+        double totalSalarios = 0;
+        for (Employee employee : employees) {
+            totalSalarios += employee.getSalary();
+        }
+        double salarioPromedio = totalSalarios / employees.size();
+        // Redondear el salario promedio a 2 cifras decimales
+        salarioPromedio = Math.round(salarioPromedio * 100.0) / 100.0;
+        return salarioPromedio;
+    }
+    public double calcularGastosSalariosPorEmpresa(String company) {
+        List<Employee> employees = getEmployeesByCompany(company);
+        double gastosSalarios = 0;
+        for (Employee employee : employees) {
+            gastosSalarios += employee.getSalary();
+        }
+        // Redondear los gastos en salarios a 2 cifras decimales
+        gastosSalarios = Math.round(gastosSalarios * 100.0) / 100.0;
+        return gastosSalarios;
+    }
+    public List<Employee> getEmployeesByGender(String gender) {
+        return employeeRepository.findByGenero(gender);
+    }
 
 
 
