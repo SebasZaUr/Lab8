@@ -32,7 +32,7 @@ class Lab7ApplicationTests {
 	private Employee employee;
 	@BeforeEach
 	public void setup(){
-		employee = new Employee("1","cesar","amaya","president",1000000000,"apple","masculino");
+		employee = new Employee("1", "Ana", "Gómez", "Desarrollador", 50000, "Microsoft", "Femenino");
 	}
 	// JUnit test for getEmployeeById method
 	@DisplayName("JUnit test for getEmployeeById method")
@@ -63,20 +63,33 @@ class Lab7ApplicationTests {
 	public void givenNoEmployees_whenCreateEmployee_thenCreationSuccessful() {
 		// given
 
-		given(employeeRepository.save(any(Employee.class))).willReturn(new Employee("1","cesar","amaya","president",1000000000,"apple","masculino"));
+		given(employeeRepository.save(any(Employee.class))).willReturn((new Employee("2", "Luisa", "Martínez", "Diseñador", 52000, "Google", "Femenino")));
 
 		// when
-		Employee newEmployee = employeeService.addEmployee(new Employee("1","cesar","amaya","president",1000000000,"apple","masculino"));
+		Employee newEmployee = employeeService.addEmployee(new Employee("2", "Luisa", "Martínez", "Diseñador", 52000, "Google", "Femenino"));
 
 		// then
 		assertThat(newEmployee).isNotNull();
 		assertThat(newEmployee.getId()).isEqualTo("2");
-		assertThat(newEmployee.getFirstName()).isEqualTo("sebas");
-		assertThat(newEmployee.getLastName()).isEqualTo("zamora");
-		assertThat(newEmployee.getRole()).isEqualTo("Developer");
-		assertThat(newEmployee.getSalary()).isEqualTo(50000);
+		assertThat(newEmployee.getFirstName()).isEqualTo("Luisa");
+		assertThat(newEmployee.getLastName()).isEqualTo("Martínez");
+		assertThat(newEmployee.getRole()).isEqualTo("Diseñador");
+		assertThat(newEmployee.getSalary()).isEqualTo(52000);
 	}
+	@DisplayName("JUnit test for deleteEmployee method")
+	@Test
+	public void givenEmployeeId_whenDeleteEmployee_thenNothing(){
+		// given - precondition or setup
+		String employeeId = "1";
 
+		willDoNothing().given(employeeRepository).deleteById(employeeId);
+
+		// when -  action or the behaviour that we are going test
+		employeeService.deleteEmployee(employeeId);
+
+		// then - verify the output
+		verify(employeeRepository, times(1)).deleteById(employeeId);
+	}
 
 
 
