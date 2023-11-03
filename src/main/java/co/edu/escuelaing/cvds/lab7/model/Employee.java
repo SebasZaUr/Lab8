@@ -22,16 +22,39 @@ public class Employee {
     private String role;
     @Column(name = "SALARY")
     private float salary;
+    @Column (name = "COMPANY")
+    private String company;
+
+    @Column (name = "GENDER")
+    private String genero;
 
     public Employee() {
     }
 
-    public Employee(String id, String firstName, String lastName, String role, float salary) {
+    public String getCompany() {
+        return company;
+    }
+
+    public void setCompany(String company) {
+        this.company = company;
+    }
+
+    public String getGenero() {
+        return genero;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
+
+    public Employee(String id, String firstName, String lastName, String role, float salary, String company, String genero) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.role = role;
         this.salary = salary;
+        this.company = company;
+        this.genero = genero;
     }
 
     public String getId() {
@@ -94,7 +117,9 @@ public class Employee {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", role='" + role + '\'' +
-                ", salary=" + salary +
+                ", salary=" + salary + '\''+
+                ", company='" + company + '\'' +
+                ", genero='" + genero +
                 '}';
     }
 

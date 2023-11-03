@@ -32,6 +32,11 @@ public class EmployeeController {
         employeeService.addEmployee(employee);
         return "redirect:/employee";
     }
+    @GetMapping("/histograma")
+    public String histograma(Model model) {
+        model.addAttribute("salaries", employeeService.getAllSalaries());
+        return "histograma";
+    }
     @GetMapping("/update/{id}")
     public String showFormForUpdate(@PathVariable( value = "id") String id, Model model) {
 

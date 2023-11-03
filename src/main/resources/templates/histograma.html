@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histograma de Salarios</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+<h1>Histograma de Salarios</h1>
+<canvas id="histograma"></canvas>
+
+<script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var salaries = ${salaries}; // Obtener los salarios del modelo
+
+            var ctx = document.getElementById('histograma').getContext('2d');
+            var histograma = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: salaries.map(function(salary, index) { return "Empleado " + (index + 1); }),
+                    datasets: [{
+                        label: 'Salarios',
+                        data: salaries,
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

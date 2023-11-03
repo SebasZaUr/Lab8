@@ -27,6 +27,9 @@ public class EmployeeService {
 
         return employeeRepository.findById(employee_id);
     }
+    public List<Float> getAllSalaries() {
+        return employeeRepository.getAllSalaries();
+    }
 
     public List<Employee> getAllEmployees() {
         return employeeRepository.findAll();
