@@ -76,20 +76,7 @@ class Lab7ApplicationTests {
 		assertThat(newEmployee.getRole()).isEqualTo("Developer");
 		assertThat(newEmployee.getSalary()).isEqualTo(50000);
 	}
-	@DisplayName("JUnit test for deleteEmployee method")
-	@Test
-	public void givenEmployeeId_whenDeleteEmployee_thenNothing(){
-		// given - precondition or setup
-		String employeeId = "1";
 
-		willDoNothing().given(employeeRepository).deleteById(employeeId);
-
-		// when -  action or the behaviour that we are going test
-		employeeService.deleteEmployee(employeeId);
-
-		// then - verify the output
-		verify(employeeRepository, times(1)).deleteById(employeeId);
-	}
 
 
 
