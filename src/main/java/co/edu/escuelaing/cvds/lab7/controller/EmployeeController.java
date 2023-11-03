@@ -32,11 +32,7 @@ public class EmployeeController {
         employeeService.addEmployee(employee);
         return "redirect:/employee";
     }
-    @GetMapping("/histograma")
-    public String histograma(Model model) {
-        model.addAttribute("salaries", employeeService.getAllSalaries());
-        return "histograma";
-    }
+    
     @GetMapping("/update/{id}")
     public String showFormForUpdate(@PathVariable( value = "id") String id, Model model) {
 
@@ -55,4 +51,14 @@ public class EmployeeController {
          employeeService.deleteEmployee(id);
          return "redirect:/employee";
      }
+
+    @GetMapping("/seleccionar")
+    public String seleccionarGrafico(Model model) {
+        return "seleccionar";
+    }
+    @GetMapping("/histograma")
+    public String histograma(Model model) {
+        model.addAttribute("salaries", employeeService.getAllSalaries());
+        return "histograma";
+    }
 }
